@@ -1,0 +1,47 @@
+INCLUDE Irvine32.inc
+
+.data 
+root_ BYTE "The root of required Number IS : ",0
+
+ent_val BYTE "Enter vale to find root : ",0
+val DWORD 0
+var	 DWORD 1
+tsum DWORD 0
+
+.code 
+main PROC
+mov eax,0
+mov ebx,1
+
+mov edx,OFFSET ent_val
+call writestring
+call readint
+mov val,eax
+
+while_:
+	mov eax,tsum
+
+	add tsum,ebx
+	mov ecx,val
+	cmp tsum,ecx
+	jge out_
+	
+	inc var
+	add ebx,2
+	jmp while_
+
+out_:NOP
+mov eax,var
+mov edx,OFFSET root_
+call writestring
+call writedec
+
+
+
+
+call crlf
+
+call waitmsg
+exit 
+main ENDP
+END main

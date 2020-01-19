@@ -1,0 +1,227 @@
+LAB: 3
+NAME : M.Hassan Ahmed
+Roll No : K17-3654
+Section : E
+
+ 
+Q1:Convert the following high-level instruction into Assembly Language: x = (x+1) – (y­1) + y
+
+TITLE Q1(Test.asm)
+INCLUDE Irvine32.inc
+
+;Q1 : Convert the following high-level instruction into Assembly Language: x = (x+1) – (y­1) + y
+; EVALUATE x = (x + 1) - (y + 1) +B y 
+; when x = 7, y = 6 -> x = 7
+
+.data
+x SDWORD 7h
+y SDWORD 6h
+
+.code
+main PROC
+
+mov EAX,0h
+mov EBX,0h
+mov ECX,0h
+mov EDX,0h
+mov EAX,x
+add EAX,1
+mov EBX,y
+add EBX,1
+mov ECX,y
+sub EAX,EBX
+add EAX,ECX
+mov x,
+call dumpregs
+
+exit
+main ENDP
+END main
+
+Q2: Write a program in assembly language that implements following expression: eax = ­val2 + 7 – val3 +val1
+
+TITLE Q2(Test.asm)
+INCLUDE Irvine32.inc
+
+
+;Q2 : Write a program in assembly language that implements following expression: eax = ­val2 + 7 – val3 +val1
+
+.data
+val1 word 8
+val2 word 15
+val3 word 20
+
+.code
+main PROC
+
+mov EAX,0h
+mov EBX,0h
+mov ECX,0h
+mov EDX,0h
+add AX,val2
+add AX,7
+sub AX,val3
+add AX,val1
+
+call dumpregs
+
+exit
+main ENDP
+END main
+
+
+
+
+Q3: Write a program to find area of a square. Declare necessary variable side for the program (assign any arbitrary value to the variable).
+
+TITLE Q3(Test.asm)
+INCLUDE Irvine32.inc
+
+;Q3 : Write a program to find area of a square. Declare necessary variable side for the program (assign any arbitrary value to the variable).
+
+.data
+x DWORD 5
+
+.code
+main PROC
+
+mov EAX,0h
+mov EBX,0h
+mov ECX,0h
+mov EDX,0h
+mov EAX,x
+mul x
+mov x,EAX
+
+call dumpregs
+
+exit
+main ENDP
+END main
+
+Q4: Write a program to find area of a rectangle. Declare necessary variables length & width for the program (assign arbitrary values to the variables).
+
+
+TITLE Q4(Test.asm)
+INCLUDE Irvine32.inc
+
+
+;Q4 :Write a program to find area of a rectangle. Declare necessary variables length & width for the program (assign arbitrary values to the variables).
+
+.data
+area DWORD 0
+x DWORD 5h
+y DWORD 7h
+
+.code
+main PROC
+
+mov EAX,0h
+mov EBX,0h
+mov ECX,0h
+mov EDX,0h
+mov EAX,x
+mul y
+mov area,EAX
+
+call dumpregs
+
+exit
+main ENDP
+END main
+
+
+Q5 :Write a program to find area of a triangle. Declare all necessary variables for the program (give arbitrary values to the variables).
+
+TITLE Q5(Test.asm)
+INCLUDE Irvine32.inc
+
+
+;Q5 :Write a program to find area of a triangle. Declare all necessary variables for the program (give arbitrary values to the variables).
+; area of triangle = 1/2 * base  * perpendicular height
+
+.data
+area DWORD 0
+base DWORD 5h
+perp DWORD 7h
+half DWORD 2
+
+.code
+main PROC
+
+mov EAX,0h
+mov EBX,0h
+mov ECX,0h
+mov EDX,0h
+mov EAX,base
+mul perp
+div half
+mov area,EAX
+
+call dumpregs
+
+exit
+main ENDP
+END main
+
+
+
+Q6 :
+i. Write an instruction that increments val2.
+ii. Write an instruction that subtracts val3 from EAX.
+iii. Write instructions that subtract val4 from val2.
+iv. If val2 is incremented by 1 using the ADD instruction, note down the values of Carry and Sign flags?
+v. If val4 is incremented by 1 using the ADD instruction, note down the values of Overflow and Sign flag.
+
+
+
+TITLE Q6(Test.asm)
+INCLUDE Irvine32.inc
+
+
+;Q6 :
+;i. Write an instruction that increments val2.
+;ii. Write an instruction that subtracts val3 from EAX.
+;iii. Write instructions that subtract val4 from val2.
+;iv. If val2 is incremented by 1 using the ADD instruction, note down the values of Carry and Sign flags?
+;v. If val4 is incremented by 1 using the ADD instruction, note down the values of Overflow and Sign flag.
+
+
+.data
+val1 BYTE 10h 
+val2 WORD 8000h
+val3 DWORD 0FFFFh
+val4 WORD 7FFFh
+
+.code
+main PROC
+
+mov EAX,0h
+mov EBX,0h
+mov ECX,0h
+mov EDX,0h
+
+;i
+inc val2
+
+;ii
+mov EAX,10000h
+sub EAX,val3
+
+;iii
+mov BX,val2
+sub BX,val4
+mov val2,BX
+
+;iv
+inc val2
+call dumpregs
+;v
+inc val4
+call dumpregs
+
+
+
+exit
+main ENDP
+END main
